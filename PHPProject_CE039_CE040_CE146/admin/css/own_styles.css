@@ -1,0 +1,73 @@
+body{
+    font-family: 'Nunito', sans-serif !important;
+    background-color:#f5f5f5;
+}
+
+/*-----------------------------Root-Default-Style-------------------------------*/
+
+.btn-color{
+    background: linear-gradient(to right, #fc5c7d, #6a82fb) !important;
+    color: white !important;
+    border: none !important;
+}
+
+
+
+/*-----------------------------Changes for login form-------------------------------*/
+.position{
+    position :absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.left{ padding:0px; margin:0px; width:190px; position:relative; left:60px; top:-52px; height:auto;}
+#title{ text-transform:uppercase; font-family:Bernard MT Condensed; font-style:normal;}
+#title1{font-family:"Times New Roman", Times, serifs; font-size:13px; font-style:normal; color:#666}
+#link{ text-decoration:none;  color:#06F;}
+#link:hover{ text-decoration:underline;}
+.home_content{
+	width:700px;
+	height:500px;
+	float:right;
+	margin-right:8px;
+	padding:0px;
+}
+.login_bold{
+    font-weight: 700;
+}
+
+/*------------------------Errors-------------------------------------------*/
+.ch_error{
+    font-size: 0.9rem !important;
+}
+
+/*--------------------------Message Display--------------------------*/
+.ch_left{
+    position : absolute;
+    left:  2.5rem !important;
+}
+.ch_length{
+    width:30vw !important;
+}
+.playlist_info{
+	width:400px;
+	border-top:6px solid #09F;
+    border-bottom:6px solid #09F;
+    border-left: 6px solid #09F;
+    border-right: 6px solid #09F;
+	position:relative;
+	float:left;
+	margin-left:40px;
+	top:26px;
+}
+.playlist{
+	width:750px;
+    border-top:6px solid #09F;
+    border-bottom:6px solid #09F;
+    border-left: 6px solid #09F;
+    border-right: 6px solid #09F;
+	position:relative;
+	float:left;
+	margin-left:8%;
+	top:26px;
+}
