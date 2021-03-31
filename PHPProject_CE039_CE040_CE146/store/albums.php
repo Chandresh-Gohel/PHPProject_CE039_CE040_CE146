@@ -4,11 +4,17 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-  $user = "Welcome ".$_SESSION['user'];
+  $user = "Welcome " . $_SESSION['user'];
 } else {
   session_destroy();
   header('Location: ./../index.php');
 }
+if (!empty($_POST["album_category"])) {
+  $category_id = $_POST['album_category'];  
+} else {
+  $category_id = "";
+}
+
 
 ?>
 <!-- ------------------------------------Start of Navbar------------------------------ -->
@@ -47,13 +53,13 @@ if (isset($_SESSION['user'])) {
           <!-- <li class="nav-item active">
         <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
       </li> -->
-      <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <?php echo $user; ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="logout.php">Logout</a>
-              
+
             </div>
           </li>
         </ul>
@@ -63,8 +69,10 @@ if (isset($_SESSION['user'])) {
 </br>
 </br>
 <div class="container">
-<p><h5>Filter By Category:</h5></p>
-<form class="form-inline" method="POST" action="songsByCategory.php">
+  <p>
+  <h5>Filter By Category:</h5>
+  </p>
+  <form class="form-inline" method="POST">
             <select class="form-control ch_length" name="album_category" id="album_category" style="max-width:70%;">
             <option value="CATEGORY" selected="selected">SELECT CATEGORY</option>
                 <?php 
@@ -74,7 +82,7 @@ if (isset($_SESSION['user'])) {
                 $rowCategories=$getcategories->fetch(PDO::FETCH_ASSOC);
                 while(!empty($rowCategories)){
                 ?>
-                <option value="<?php echo $rowCategories['id'] ?>" length="90px"><?php echo $rowCategories['catname']?></option>
+                <option name='filter_by_category' id='filter_by_category' length="90px" value="<?php echo $rowCategories['id']?>"><?php echo $rowCategories['catname']?></option>
                 <?php
               $rowCategories=$getcategories->fetch(PDO::FETCH_ASSOC); 
                   }
@@ -82,14 +90,15 @@ if (isset($_SESSION['user'])) {
                   echo $e->getMessage();
                   die();
                 }?>
+                <option name='filter_by_category' id='filter_by_category' length="90px" value="">All</option>
                 </select>
                 &emsp;
-                <input type='hidden' name='filter_by_category' id='filter_by_category' value="<?php echo $rowCategories['id']; ?>" />
                 <input type="submit" name="filter" id="filter" value="Filter">
-            </ul>
     </form>
   <div class="col15">
-  <p><h5>Album List</h5></p>
+    <p>
+    <h5>Album List</h5>
+    </p>
     <table class="table table-bordered text-center">
       <thead>
         <tr>
@@ -105,13 +114,22 @@ if (isset($_SESSION['user'])) {
       <tbody>
         <?php
         try {
-          $getalbum = $con->prepare("SELECT * FROM album ORDER BY id DESC");
+          if(!empty($category_id)){
+          $getalbum = $con->prepare("SELECT * FROM album WHERE albumcat='$category_id'");
+          }
+          else{
+            $getalbum = $con->prepare("SELECT * FROM album ORDER BY id DESC");
+          }
           $getalbum->execute();
           $rowalbum = $getalbum->fetch(PDO::FETCH_ASSOC);
           while (!empty($rowalbum)) {
-            $album_cat_id = $rowalbum['albumcat'];
             try {
-              $getalbumcat = $con->prepare("SELECT catname FROM category WHERE id='$album_cat_id'");
+              if(!empty($category_id)){
+              $getalbumcat = $con->prepare("SELECT catname FROM category WHERE id='$category_id'");
+              }
+              else{
+                $getalbumcat = $con->prepare("SELECT catname FROM category");
+              }
               $getalbumcat->execute();
               $rowalbumcat = $getalbumcat->fetch(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
@@ -142,20 +160,19 @@ if (isset($_SESSION['user'])) {
         ?>
       </tbody>
   </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="search_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Search Result</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="search_result">        
+  <!-- Modal -->
+  <div class="modal fade" id="search_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Search Result</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="search_result">
+        </div>
       </div>
     </div>
   </div>
-</div>
-<?php include_once "templetes/footer.php" ?>
+  <?php include_once "templetes/footer.php" ?>

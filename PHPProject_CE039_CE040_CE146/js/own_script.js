@@ -59,7 +59,7 @@ if(password==""){
     $("#password_error").css("color","red");
     return false;
 }
-else if(password.length<3){
+else if(password.length<8){
     var passnotproper="Enter proper password. Required Minimum 8.";
     $("#password_error").html(passnotproper);
     $("#password_error").css("color","red");

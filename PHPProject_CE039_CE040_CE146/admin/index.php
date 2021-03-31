@@ -28,7 +28,7 @@ if (isset($_SESSION['user'])&&isset($_SESSION['user_role'])&&$_SESSION['user_rol
         </li>
       </ul>
       <!---------------------------------------------CENTER-------------------------------->
-      <<ul class="navbar-nav mr-auto ml-auto">
+      <ul class="navbar-nav mr-auto ml-auto">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2 ch_length" type="text" maxlength="1" id="search_bar" name="search_bar" placeholder="Search by song name or author or movie" aria-label="Search">
           <button class="btn btn-secondary my-2 my-sm-0" id="search_btn"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -74,20 +74,35 @@ if (isset($_SESSION['user'])&&isset($_SESSION['user_role'])&&$_SESSION['user_rol
         // $albumid=$rowcat['songalbum'];   
         ?>
       <td>
-      <div class="card p-3 ml-2 mr-2" style="width: 20rem;">
-                <img class="card-img-top" src="../admin/images/album/<?php echo $rowalbum['albumimage']; ?>" alt="Card image cap" style="width: 130px; height:120px;" />
-                <div class="card-body">
-                  <h5 class="card-title">Album:&emsp;<a href="songsByAlbum.php?album_id=<?php echo $rowalbum['id']; ?>"><?php echo $rowalbum['albumname']; ?></a>
-                    <h5>
-                      <p class="card-text">Writer:&emsp;<?php echo $rowalbum['albumwriter']; ?>
-                    </h5>
-                    </p>
-                    <h5>
-                      <p class="card-text">Singer:&emsp;<?php echo $rowalbum['albumsinger']; ?>
-                    </h5>
-                    </p>
-                </div>
-              </div>
+      <div class="playlist_info">
+            	<table  cellspacing="0">
+                <tr>
+                    	<td><img src="../admin/images/album/<?php echo$rowalbum['albumimage']; ?>" height="130px" width="120px"/><p class="text-center"><b>Cover Page</b></p></td>
+                        <td>
+                        	<table>
+                            	<tr>
+                                	<td id=album><b>Album:</b></td>
+                                	<td><a href="songsByAlbum.php?album_id=<?php echo $rowalbum['id']; ?>"><?php echo $rowalbum['albumname']?></td>
+                                </tr>
+                                <tr>
+                                	<td id="a1"><b>Singer:</b></td>
+                                	<td id="a2"><?php echo $rowalbum['albumsinger']?></td>
+                                </tr>
+                                <tr>
+                                	<td id="a1"><b>Writer:</b></td>
+                                	<td id="a2"><?php echo $rowalbum['albumwriter']?></td>
+                                </tr>
+                                <tr>
+                                	<td>&nbsp;</td>
+                                </tr>
+                                 <tr>
+                                	<td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>	
+    </div><!--End plalist_info-->                  
       </td>
     <?php
       $rowalbum = $sql_select->fetch(PDO::FETCH_ASSOC);

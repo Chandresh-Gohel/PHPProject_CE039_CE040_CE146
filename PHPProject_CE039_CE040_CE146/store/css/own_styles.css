@@ -32,20 +32,6 @@ body{
 	margin-right:8px;
 	padding:0px;
 }
-.login_bold{
-    font-weight: 700;
-}
-
-/*------------------------Errors-------------------------------------------*/
-.ch_error{
-    font-size: 0.9rem !important;
-}
-
-/*--------------------------Message Display--------------------------*/
-.ch_left{
-    position : absolute;
-    left:  2.5rem !important;
-}
 .ch_length{
     width:30vw !important;
 }
