@@ -93,16 +93,16 @@ if(isset($_POST['add_cat']))
                 <form id="catform" method="POST" enctype="multipart/form-data">
                   <div class="form-row">
                         <label >Song Cattegory:</label>
-                        <input type="text" class="form-control"  name="cat_name" id="cat_name" placeholder="Category" size="39"/>
+                        <input type="text" class="form-control"  name="cat_name" id="cat_name" placeholder="Category" size="39" required/>
                     </div>
                     <div class="form-row">
                     	<label for="Album Search">Category Description</label>
-                        <textarea class="form-control"  rows="6" cols="50" placeholder="Description" name="cat_desc[]" id="cat_desc"></textarea>
+                        <textarea class="form-control"  rows="6" cols="50" placeholder="Description" name="cat_desc[]" id="cat_desc" required></textarea>
                     </div>
                     <div class="form-row">
                     	<label for="Image">Category Baner</label>
                       <div class="col">
-                        <input type="file" class="form-control"  name="cat_image" id="cat_image"/>
+                        <input type="file" class="form-control"  name="cat_image" id="cat_image" required/>
                       </div>
                     </div>
                     <div class="form-row">

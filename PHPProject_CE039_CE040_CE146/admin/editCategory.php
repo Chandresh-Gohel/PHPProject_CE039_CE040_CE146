@@ -106,18 +106,18 @@ if(isset($_POST['edit_cat']))
                 <h3 class="mb-3 bold">Category</h3>
                 <form id="catform" method="POST" enctype="multipart/form-data">
                   <div class="form-row">
-                        <label >Song Cattegory:</label>
-                        <input type="text" class="form-control"  name="cat_name" id="cat_name" placeholder="<?php echo $rowcat['catname']; ?>" value="<?php echo $rowcat['catname']; ?>" size="39"/>
+                        <label >Song Category:</label>
+                        <input type="text" class="form-control"  name="cat_name" id="cat_name" placeholder="<?php echo $rowcat['catname']; ?>" value="<?php echo $rowcat['catname']; ?>" size="39" readonly="readonly"/>
                         <input type="hidden"  name="cat_id" id="cat_id" value="<?php echo $catId; ?>"/>
                     </div>
                     <div class="form-row">
                     	<label for="Album Search">Category Description:</label>
-                        <textarea class="form-control"  rows="6" cols="50" name="cat_desc[]" id="cat_desc"><?php echo $rowcat['catdesc']; ?></textarea>
+                        <textarea class="form-control"  rows="6" cols="50" name="cat_desc[]" id="cat_desc" required><?php echo $rowcat['catdesc']; ?></textarea>
                     </div>
                     <div class="form-row">
                     	<label for="Image">Category Baner</label>
                       <div class="col">
-                        <input type="file" class="form-control"  name="cat_image" id="cat_image"/>
+                        <input type="file" class="form-control"  name="cat_image" id="cat_image" required/>
                       </div>
                     </div>
                     <div class="form-row">

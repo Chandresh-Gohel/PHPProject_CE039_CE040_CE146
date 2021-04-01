@@ -95,8 +95,8 @@ if(isset($_POST['add_album']))
                   <div class="form-row">
                   <div class="col">
                         <label >Album Cat:</label>
-                        <select class="form-control" name="album_cat" id="album_cat" >
-                        <option value="CATEGORY" selected="selected">SELECT CATEGORY</option>
+                        <select class="form-control" name="album_cat" id="album_cat" required>
+                        <option value="" selected="selected">SELECT CATEGORY</option>
                         <?php 
                         try{
                           $getCat = $con->prepare("SELECT id,catname FROM category");
@@ -118,27 +118,27 @@ if(isset($_POST['add_album']))
                     </div>
                     <div class="col">
                       <label for="Album">Album Name</label>
-                      <input type="text" class="form-control"  name="album_name" id="album_name" placeholder="Album" size="39"/>
+                      <input type="text" class="form-control"  name="album_name" id="album_name" placeholder="Album" size="39" required/>
                   </div>
                   </div>
                   <div class="form-row">
                   <div class="col">
                     	<label for="Singer">Album Singer(s)</label>
-                        <input type="text" class="form-control"  name="album_singer" id="album_singer"placeholder="Singer" size="39"/>
+                        <input type="text" class="form-control"  name="album_singer" id="album_singer"placeholder="Singer" size="39" required/>
                   </div>
                   <div class="col">
                     	<label for="Writer">Album Writer(s)</label>
-                        <input type="text" class="form-control"  name="album_writer" id="album_writer" placeholder="Writer" size="39"/>
+                        <input type="text" class="form-control"  name="album_writer" id="album_writer" placeholder="Writer" size="39"required/>
                     </div>
                     </div>
                     <div class="form-row">
                     	<label for="Album Search">Album Search</label>
-                        <textarea class="form-control"  rows="6" cols="50" placeholder="Album Search" name="album_search[]" id="album_search"></textarea>
+                        <textarea class="form-control"  rows="6" cols="50" placeholder="Album Search" name="album_search[]" id="album_search" required></textarea>
                     </div>
                     <div class="form-row">
                     	<label for="Image">Album Cover</label>
                       <div class="col">
-                        <input type="file" class="form-control"  name="album_image" id="album_image"/>
+                        <input type="file" class="form-control"  name="album_image" id="album_image" required/>
                       </div>
                     </div>
                     <div class="form-row">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2021 at 08:13 PM
+-- Generation Time: Apr 01, 2021 at 04:21 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -20,21 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `musicmaniya`
 --
-
+CREATE DATABASE IF NOT EXISTS `musicmaniya`;
+USE `musicmaniya`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `album`
 --
 
-CREATE TABLE `album` (
+CREATE TABLE IF NOT EXISTS `album` (
   `id` int(100) UNSIGNED NOT NULL,
   `albumcat` int(50) NOT NULL,
-  `albumname` varchar(60) DEFAULT NULL,
-  `albumsinger` varchar(100) DEFAULT NULL,
-  `albumwriter` varchar(100) DEFAULT NULL,
-  `albumdesc` varchar(250) DEFAULT NULL,
-  `albumimage` varchar(30) DEFAULT NULL
+  `albumname` varchar(1000) NOT NULL,
+  `albumsinger` varchar(1000) NOT NULL,
+  `albumwriter` varchar(1000) NOT NULL,
+  `albumdesc` varchar(1000) NOT NULL,
+  `albumimage` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -47,11 +48,11 @@ CREATE TABLE `album` (
 -- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE IF NOT EXISTS `category` (
   `id` int(10) NOT NULL,
-  `catname` varchar(50) DEFAULT NULL,
-  `catdesc` varchar(250) DEFAULT NULL,
-  `catimage` varchar(30) DEFAULT NULL
+  `catname` varchar(1000) NOT NULL,
+  `catdesc` varchar(1000) NOT NULL,
+  `catimage` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -65,15 +66,15 @@ CREATE TABLE `category` (
 -- Table structure for table `songs`
 --
 
-CREATE TABLE `songs` (
+CREATE TABLE IF NOT EXISTS `songs` (
   `id` int(100) UNSIGNED NOT NULL,
   `songname` varchar(1000) NOT NULL,
-  `songcat` varchar(10) DEFAULT NULL,
+  `songcat` varchar(1000) NOT NULL,
   `songalbum` int(50) UNSIGNED NOT NULL,
-  `songsinger` varchar(100) DEFAULT NULL,
-  `songdesc` varchar(250) DEFAULT NULL,
-  `songfile` varchar(50) DEFAULT NULL,
-  `songwriter` varchar(100) NOT NULL
+  `songsinger` varchar(1000) NOT NULL,
+  `songdesc` varchar(1000) NOT NULL,
+  `songfile` varchar(1000) NOT NULL,
+  `songwriter` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -87,7 +88,7 @@ CREATE TABLE `songs` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(225) NOT NULL,
@@ -99,6 +100,9 @@ CREATE TABLE `users` (
 --
 -- Dumping data for table `users`
 --
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created`, `role`) VALUES
+(1, 'admin', 'admin@musicmania.com', 'pass@admin', '2021-03-31 13:58:36', 'admin');
 
 --
 -- Indexes for dumped tables

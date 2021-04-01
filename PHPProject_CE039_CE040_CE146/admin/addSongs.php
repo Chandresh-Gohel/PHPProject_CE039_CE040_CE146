@@ -114,7 +114,7 @@ if(isset($_POST['add_song']))
                   <div class="form-row">
                   <div class="col">
                     <label for="Song File">Song Name:</label>
-               		<input type="text" class="form-control" name="song_name" id="song_name"/> 
+               		<input type="text" class="form-control" name="song_name" id="song_name" required/> 
                   </div>
                   <div class="col">
                         <label >Song Category:</label>
@@ -142,13 +142,13 @@ if(isset($_POST['add_song']))
                     </br>
                     <div class="form-row">
                     	<label for="Song Search">Description:</label>
-                        <textarea class="form-control"  rows="6" cols="50" placeholder="Song Search" name="song_search[]" id="song_search"></textarea>
+                        <textarea class="form-control"  rows="6" cols="50" placeholder="Song Search" name="song_search[]" id="song_search" required></textarea>
                         </br>
                     </div>
                     <div class="form-row">
                         <label for="Song File">Song File:</label>
                         <div class="col">
-               		        <input type="file" calss="form-control" name="song_file" id="song_file"/>
+               		        <input type="file" calss="form-control" name="song_file" id="song_file" required/>
                         </div>
                         </br>
                     </div>
